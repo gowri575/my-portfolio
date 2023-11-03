@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function CalculateClick(){
+            var p = document.querySelector("p");
+            var male = document.getElementById("optmale");
+            var female = document.getElementById("optfemale");
+            var a = document.getElementById("txtage");
+            var h = parseFloat(document.getElementById("txtheight").value);
+            var w = parseFloat(document.getElementById("txtweight").value);
+            var value = document.getElementById("YourValue");
+            var bmi = w/ Math.pow(h/100,2);
+            if(bmi>=1 && bmi<18.5){
+                value.style.marginLeft = "50px";
+            } else if(bmi>=18.5 && bmi<=25) {
+                value.style.marginLeft = "250px";
+            }else if(bmi>=25 && bmi<=29.9) {
+                value.style.marginLeft = "450px";
+            }else if(bmi>=30) {
+                value.style.marginLeft = "650px";
+            }
+            document.getElementById("BMI").innerHTML = "Your BMI is <b>" + Math.round(bmi) + " </b> "
+        }
+    </script>
+</head> 
+<body class="container-fluid bg-dark">
+    <div class="d-flex justify-content-center mt-5">
+        <div class="card w-50">
+            <div class="card-header">
+                <h3>BMI Calculator</h3>
+            </div>
+            <div class="card-body">
+                <input type="radio" class="form-check-input" check id="optMale" name="gender"><label class="form-check-label">Male</label>
+                <input type="radio" class="form-check-input" id="optfemale" name="gender"><label class="form-check-label">Female</label><br><br>
+                Age (1 Year or above)* <input type="text" id="txtage"><br><br>
+                Height*<input type="text" placeholder="cms" id="txtheight">  Weight*<input type="text"  placeholder="Kg's" id ="txtweight"><br><br>
+                <button onclick="CalculateClick()" class="btn btn-primary">Calculate</button><br>
+                <div>
+                    <p>The body mass index (BMI) calculator estimates the amount of body fat a person has in relation to age, height, and weight.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div id="BMI"style="text-align:center; font-size:20px; font-weight:bold;"></div> <br>
+                <div class="progress" style = "width:40; height: 20px;";>
+                    <div class="progress-bar bg-secondary" style="width:25%; color:black">UnderWeight</div>
+                    <div class="progress-bar bg-info" style="width:25%; color:black">Normal</div>
+                    <div class="progress-bar bg-warning" style="width:25%; color:black">OverWeight</div>
+                    <div class="progress-bar bg-danger" style="width:25%; color:black">Obesity</div>
+                </div>
+                <div id="YourValue">
+                    <span class="bi bi-caret-down-fill"></span>
+                    <div>You</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
